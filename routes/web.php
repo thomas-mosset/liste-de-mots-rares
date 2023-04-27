@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::prefix('/liste')->name('liste.')->group(function () {
 
     Route::get('/', [WordController::class, 'index'])->name('index');
+
+    Route::get('/create', [WordController::class, 'create'])->name('create');
+    Route::post('/create', [WordController::class, 'store']);
     
     Route::get('/{slug}-{id}', [WordController::class, 'show'])
     ->where([

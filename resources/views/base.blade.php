@@ -43,7 +43,7 @@
                     >Accueil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ route('liste.create') }}" @class(['nav-link', 'active' => $currentRoute === 'liste.create'])>Ajouter un mot</a>
                   </li>
 
                 </ul>
