@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Word;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
 class WordController extends Controller
 {
-    public function index (): Paginator
+    public function index (): View
     {
-        return \App\Models\Word::paginate(25);
+        $words = \App\Models\Word::paginate(1);
+
+        return view('liste.index', [
+            'words' => $words,
+        ]);
     }
 
     public function show (string $slug, string $id): RedirectResponse | Word 
