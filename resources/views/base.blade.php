@@ -52,8 +52,17 @@
           </nav>
 
         <div class="container">
+
+            @if (session('success'))
+              <!-- notification de succès d'un ajout de mot -->
+              <div class="alert alert-success">
+                {{ session('success') }}
+              </div>
+            @endif
+
             <!-- personalized content -->
             @yield('content')
+
         </div>
     </body>
 </html>

@@ -35,13 +35,14 @@ class WordController extends Controller
         ]);
     }
 
+    // create view
     public function create ()
     {
         $data = array(
             'types' => ['n. m.', 'n. f.', 'n.', 'adj.', 'v.'],
         );
 
-        return view('liste.create',  compact('data'));
+        return view('liste.create', compact('data'));
     }
 
     public function store (Request $request) 
@@ -57,9 +58,10 @@ class WordController extends Controller
 
         // dd($word);
 
-        return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id]);
+        return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id])->with('success', "Le mot a bien été ajouté.");
     }
 
+    // show 1 word (page)
     public function show (string $slug, string $id): RedirectResponse | View 
     {
         $word = Word::findOrFail($id);
