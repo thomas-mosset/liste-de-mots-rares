@@ -39,7 +39,7 @@
 
         <div class="mb-3">
             <label for="type" class="form-label">Type:</label>
-            <select name="type" id="type">
+            <select class="form-select" name="type" id="type">
                 @foreach ($data['types'] as $type)
                     <option value="{{ $type }}">{{ $type }}</option>
                 @endforeach

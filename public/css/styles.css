@@ -17,3 +17,13 @@
     text-align: center;
 }
 
+.form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-control:focus {
+    border-color: #157347;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
