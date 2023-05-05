@@ -3,62 +3,67 @@
 @section('title', 'Ajout')
 
 @section('content')
-    <h1>Ajouter un mot rare</h1>
 
-    <form action="" method="post">
-        @csrf
-        
-        <div class="mb-3">
-            <label for="word" class="form-label">Mot:</label>
-            <input type="text" class="form-control" name="word" id="word" value="{{ old('word') }}"/> 
-            <!-- value="{{ old('word') }} permet de récupérer l'ancienne valeur entrée -->
+    <div class="mx-auto my-5 p-3 d-flex flex-column">
+        <h1 class="text-center text-success mb-5">Ajouter un mot rare</h1>
 
-            @error("word")
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+        <form action="" method="post" class="text-center fw-bold form">
+            @csrf
+            
+            <div class="mb-3">
+                <label for="word" class="form-label">Mot:</label>
+                <input type="text" class="form-control" name="word" id="word" value="{{ old('word') }}"/> 
+                <!-- value="{{ old('word') }} permet de récupérer l'ancienne valeur entrée -->
 
-        <div class="mb-3">
-            <label for="definition" class="form-label">Définition:</label>
-            <input type="text" class="form-control" name="definition" id="definition" value="{{ old('definition') }}"/>
+                @error("word")
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
 
-            @error("definition")
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="definition" class="form-label">Définition:</label>
+                <input type="text" class="form-control" name="definition" id="definition" value="{{ old('definition') }}"/>
 
-        <div class="mb-3">
-            <label for="exemple" class="form-label">Example (optionnel) :</label>
-            <input type="text" class="form-control" name="exemple" id="exemple" value="{{ old('exemple') }}"/>
-        </div>
+                @error("definition")
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
 
-        <div class="mb-3">
-            <label for="pronunciation" class="form-label">Prononciation (optionnel) :</label>
-            <input type="text" class="form-control" name="pronunciation" id="pronunciation" value="{{ old('pronunciation') }}" />
-        </div>
+            <div class="mb-3">
+                <label for="exemple" class="form-label">Example (optionnel) :</label>
+                <input type="text" class="form-control" name="exemple" id="exemple" value="{{ old('exemple') }}"/>
+            </div>
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Type:</label>
-            <select class="form-select" name="type" id="type">
-                @foreach ($data['types'] as $type)
-                    <option value="{{ $type }}">{{ $type }}</option>
-                @endforeach
-            </select>
+            <div class="mb-3">
+                <label for="pronunciation" class="form-label">Prononciation (optionnel) :</label>
+                <input type="text" class="form-control" name="pronunciation" id="pronunciation" value="{{ old('pronunciation') }}" />
+            </div>
 
-            @error("type")
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Type:</label>
+                <select class="form-select" name="type" id="type">
+                    @foreach ($data['types'] as $type)
+                        <option value="{{ $type }}">{{ $type }}</option>
+                    @endforeach
+                </select>
 
-        <div class="mb-3">
-            <label for="slug" class="form-label">Slug:</label>
-            <input type="text" class="form-control" name="slug" id="slug" value="{{ old('slug') }}" />
+                @error("type")
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
 
-            @error("slug")
-                <p class="text-danger">{{ $message }}</p>
-            @enderror
-        </div>
+            <div class="mb-3">
+                <label for="slug" class="form-label">Slug:</label>
+                <input type="text" class="form-control" name="slug" id="slug" value="{{ old('slug') }}" />
 
-        <button type="submit" class="btn btn-success">Ajouter</button>
-    </form>
+                @error("slug")
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="btn-action-div">
+                <button type="submit" class="btn btn-success">Ajouter</button>
+            </div>
+        </form>
+    </div>
 @endsection
