@@ -3,7 +3,7 @@
 @section('title', 'Accueil')
 
 @section('content')
-    <h1>Liste de mots rares</h1>
+    <h1 class="text-center">Liste de mots rares</h1>
 
     @foreach ($words as $word)
         <div>

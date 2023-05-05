@@ -1,6 +1,6 @@
 .pagination > li > a,
 .pagination > li > span {
-    color: green;
+    color: #157347;
 }
 
 .pagination > .active > a,
@@ -9,6 +9,11 @@
 .pagination > .active > span,
 .pagination > .active > span:focus,
 .pagination > .active > span:hover {
-    background-color: green;
-    border-color: green;
+    background-color: #157347;
+    border-color: #157347;
 }
+
+.btn-action-div {
+    text-align: center;
+}
+
