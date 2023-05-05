@@ -10,22 +10,31 @@
         
         <div class="mb-3">
             <label for="word" class="form-label">Mot:</label>
-            <input type="text" class="form-control" name="word" id="word" />
+            <input type="text" class="form-control" name="word" id="word" value="{{ old('word') }}"/> 
+            <!-- value="{{ old('word') }} permet de récupérer l'ancienne valeur entrée -->
+
+            @error("word")
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="definition" class="form-label">Définition:</label>
-            <input type="text" class="form-control" name="definition" id="definition" />
+            <input type="text" class="form-control" name="definition" id="definition" value="{{ old('definition') }}"/>
+
+            @error("definition")
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="exemple" class="form-label">Example (optionnel) :</label>
-            <input type="text" class="form-control" name="exemple" id="exemple" />
+            <input type="text" class="form-control" name="exemple" id="exemple" value="{{ old('exemple') }}"/>
         </div>
 
         <div class="mb-3">
             <label for="pronunciation" class="form-label">Prononciation (optionnel) :</label>
-            <input type="text" class="form-control" name="pronunciation" id="pronunciation" />
+            <input type="text" class="form-control" name="pronunciation" id="pronunciation" value="{{ old('pronunciation') }}" />
         </div>
 
         <div class="mb-3">
@@ -35,11 +44,19 @@
                     <option value="{{ $type }}">{{ $type }}</option>
                 @endforeach
             </select>
+
+            @error("type")
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label for="type" class="form-label">Slug:</label>
-            <input type="text" class="form-control" name="slug" id="slug" />
+            <label for="slug" class="form-label">Slug:</label>
+            <input type="text" class="form-control" name="slug" id="slug" value="{{ old('slug') }}" />
+
+            @error("slug")
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-success">Ajouter</button>

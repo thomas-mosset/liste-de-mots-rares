@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateWordRequest;
 use App\Models\Word;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
@@ -14,20 +15,6 @@ class WordController extends Controller
 {
     public function index (): View
     {
-        /* Validator::make([
-            // champs à valider
-            'word' => '',
-            'definition' => '',
-            'exemple' => "",
-            'slug' => "",
-        ], [
-            // règles de validation
-           'word' => ['require', 'min:2', Rule::unique('words')],
-           'definition' => ['require', 'min:8'],
-           'exemple' => ['min:8'],
-           'slug' => ['require', 'min:2', 'regex:/^[a-z0-9\-]+$/'],
-        ]); */
-
         $words = Word::paginate(6);
 
         return view('liste.index', [
@@ -38,6 +25,8 @@ class WordController extends Controller
     // create view
     public function create ()
     {
+        // dd(session()->all());
+
         $data = array(
             'types' => ['n. m.', 'n. f.', 'n.', 'adj.', 'v.'],
         );
@@ -45,18 +34,20 @@ class WordController extends Controller
         return view('liste.create', compact('data'));
     }
 
-    public function store (Request $request) 
+    public function store (CreateWordRequest $request) 
     {
+        // dd($request->validated(['word']));
+
         $word = Word::create([
-            'word' => $request->input('word'),
-            'definition' => $request->input('definition'),
+            'word' => $request->validated(['word']),
+            'definition' => $request->validated(['definition']),
             'exemple' => $request->input('exemple'),
             'pronunciation' => $request->input('pronunciation'),
-            'type' => $request->input('type'),
-            'slug' => $request->input('slug'),
+            'type' => $request->validated(['type']),
+            'slug' => $request->validated('slug'),
         ]);
-
-        // dd($word);
+        
+        // $word = Word::create($request->validated());
 
         return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id])->with('success', "Le mot a bien été ajouté.");
     }

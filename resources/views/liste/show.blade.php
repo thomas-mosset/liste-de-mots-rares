@@ -8,7 +8,7 @@
             <h1>{{ $word->word }}</h1>
 
             @if ($word->pronunciation !== null)
-                <span>({{ $word->pronunciation }})</span>
+                <span>(Se prononce : '{{ $word->pronunciation }}')</span>
             @endif
         </div>
         
