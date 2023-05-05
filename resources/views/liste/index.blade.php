@@ -11,7 +11,7 @@
                 <h2>{{ $word->word }}</h2>
 
                 @if ($word->pronunciation !== null)
-                    <span>({{ $word->pronunciation }})</span>
+                    <span>(Se prononce : '{{ $word->pronunciation }}')</span>
                 @endif
             </div>
             
@@ -29,5 +29,7 @@
     @endforeach
 
     <!-- for pagination-->
-    {{ $words->links() }}
+    <div class="d-flex justify-content-center">
+        {{ $words->links() }}
+    </div>
 @endsection
