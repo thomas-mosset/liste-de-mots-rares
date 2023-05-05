@@ -26,6 +26,9 @@ Route::prefix('/liste')->name('liste.')->group(function () {
 
     Route::get('/create', [WordController::class, 'create'])->name('create');
     Route::post('/create', [WordController::class, 'store']);
+
+    Route::get('/{word}/edit', [WordController::class, 'edit'])->name('edit'); // ex: /liste/10/edit
+    Route::post('/{word}/edit', [WordController::class, 'update']);
     
     Route::get('/{slug}-{id}', [WordController::class, 'show'])
     ->where([

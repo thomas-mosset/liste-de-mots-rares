@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateWordRequest extends FormRequest
+class FormWordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,14 @@ class CreateWordRequest extends FormRequest
     public function rules()
     {
         return [
-           'word' => ['required', 'min:2', Rule::unique('words')],
+           'word' => ['required', 'min:2', Rule::unique('words')->ignore($this->route()->parameter('word'))],
            'definition' => ['required', 'min:8'],
            // 'exemple' => ['min:2'],
            // 'pronunciation' => ['min:2'],
            'type' => ['required'],
-           'slug' => ['required', 'min:2', 'regex:/^[a-z0-9\-]+$/', Rule::unique('words')],
+           'slug' => ['required', 'min:2', 'regex:/^[a-z0-9\-]+$/', Rule::unique('words')->ignore($this->route()->parameter('word'))], 
+           // Rule::unique('words')->ignore($this->route()->parameters('word')) signifie qu'on doit obligatoirement renseigner un slug unique mais qu'à la maj, on ignorera cette règle.
+           // Fonctionnerait aussi avec : Rule::unique('words')->ignore($this->word)
         ];
     }
 

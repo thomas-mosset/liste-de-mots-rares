@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateWordRequest;
+use App\Http\Requests\FormWordRequest;
 use App\Models\Word;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
@@ -34,7 +34,7 @@ class WordController extends Controller
         return view('liste.create', compact('data'));
     }
 
-    public function store (CreateWordRequest $request) 
+    public function store (FormWordRequest $request) 
     {
         // dd($request->validated(['word']));
 
@@ -51,6 +51,33 @@ class WordController extends Controller
 
         return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id])->with('success', "Le mot a bien été ajouté.");
     }
+
+    public function edit(Word $word) 
+    {
+        $data = array(
+            'types' => ['n. m.', 'n. f.', 'n.', 'adj.', 'v.'],
+        );
+
+        return view('liste.edit', [
+            'word' => $word,
+            'data' => $data,
+        ]);
+    }
+
+    public function update (Word $word, FormWordRequest $request) 
+    {
+        $word->update([
+            'word' => $request->validated(['word']),
+            'definition' => $request->validated(['definition']),
+            'exemple' => $request->input('exemple'),
+            'pronunciation' => $request->input('pronunciation'),
+            'type' => $request->validated(['type']),
+            'slug' => $request->validated('slug'),
+        ]);
+
+        return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id])->with('success', "Le mot a bien été modifié.");
+    }
+
 
     // show 1 word (page)
     public function show (string $slug, string $id): RedirectResponse | View 
