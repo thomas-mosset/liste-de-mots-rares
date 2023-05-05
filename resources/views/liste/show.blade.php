@@ -19,5 +19,9 @@
         @if ($word->exemple !== null)
             <p>Ex: {{ $word->exemple }}</p>
         @endif
+
+        <button type="button" class="btn btn-success">
+            <a href="{{ route('liste.edit', $word->id) }}" class="link-light link-offset-2 link-underline link-underline-opacity-0">Modifier le mot</a>
+        </button>
     </div>
 @endsection
