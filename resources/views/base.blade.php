@@ -59,6 +59,13 @@
                       @class(['nav-link', 'active' => $currentRoute === 'showTodayWord'])
                     >Mot du jour</a>
                   </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-sm-center" 
+                      href="{{ route('showRandomWord') }}" 
+                      @class(['nav-link', 'active' => $currentRoute === 'showRandomWord'])
+                    >Mot aléatoire</a>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -128,4 +128,14 @@ class WordController extends Controller
             'randomWord' => $randomWord['0'],
         ]);
     }
+
+    
+    public function showRandomWord (): RedirectResponse | View 
+    {
+        $randomWord = Word::inRandomOrder()->limit(1)->get();
+
+        return view('liste.show-random-word', [
+            'randomWord' => $randomWord['0'],
+        ]);
+    }
 }
