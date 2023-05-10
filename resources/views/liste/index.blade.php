@@ -10,15 +10,15 @@
     <div>
         <p>Tri par :</p>
         <div>
-            <a href="{{ route('liste.index', ['sortedby' => 'most-recent']) }}" class="btn btn-success">Date (plus récent)</a>
-            <a href="{{ route('liste.index', ['sortedby' => 'ASC']) }}" class="btn btn-success">Ordre alphabétique</a>
-            <a href="{{ route('liste.index', ['sortedby' => 'DESC']) }}" class="btn btn-success">Ordre alphabétique inversé</a>
+            <a href="{{ route('liste.index', ['sortedby' => 'most-recent']) }}" class="btn btn-success mb-2">Date (plus récent)</a>
+            <a href="{{ route('liste.index', ['sortedby' => 'ASC']) }}" class="btn btn-success mb-2">Ordre alphabétique</a>
+            <a href="{{ route('liste.index', ['sortedby' => 'DESC']) }}" class="btn btn-success mb-2">Ordre alphabétique inversé</a>
         </div>
     </div>
 
     @foreach ($words as $word)
         <div class="my-4 p-3 d-flex justify-content-between align-items-center list-single-word">
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column list-single-word-top-infos">
                 <h2 class="text-success">{{ $word->word }}</h2>
                 <span class="fw-bold">[{{ $word->type }}]</span>
             </div>

@@ -10,7 +10,7 @@
         <form action="" method="post" class="text-center fw-bold form">
             @csrf
             
-            <div class="mb-3">
+            <div class="mb-3 form-sub-container">
                 <label for="word" class="form-label">Mot:</label>
                 <input type="text" class="form-control" name="word" id="word" value="{{ old('word') }}"/> 
                 <!-- value="{{ old('word') }} permet de récupérer l'ancienne valeur entrée -->
