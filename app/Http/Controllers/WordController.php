@@ -15,9 +15,19 @@ use Illuminate\Support\Facades\Cache;
 
 class WordController extends Controller
 {
-    public function index (): View
+    public function index (Request $request): View
     {
-        $words = Word::paginate(6);
+        $sortedBy = $request->sortedby;
+
+        if ($sortedBy === "DESC") {
+            $words = Word::orderBy('word', 'DESC')->paginate(6);
+        } elseif ($sortedBy === "ASC") {
+            $words = Word::orderBy('word', 'ASC')->paginate(6);
+        } elseif ($sortedBy === "most-recent") {
+            $words = Word::orderBy('created_at', 'DESC')->paginate(6); 
+        } else {
+            $words = Word::paginate(6);
+        }
 
         return view('liste.index', [
             'words' => $words,
