@@ -42,3 +42,7 @@ Route::prefix('/liste')->name('liste.')->group(function () {
 
 Route::get('/mot-du-jour', [WordController::class, 'showTodayWord'])
 ->name('showTodayWord');
+
+Route::fallback(function () {
+    return view('errors.404');
+});
