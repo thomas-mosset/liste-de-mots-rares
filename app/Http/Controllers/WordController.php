@@ -8,8 +8,10 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Cache;
 
 class WordController extends Controller
 {
@@ -99,6 +101,21 @@ class WordController extends Controller
 
         return view('liste.show', [
             'word' => $word,
+        ]);
+    }
+
+
+    // show 1 word / change every day
+    public function showTodayWord (): RedirectResponse | View 
+    {
+        $expirationDate = Carbon::now()->endOfDay();
+
+        $randomWord = Cache::remember('randomWord', $expirationDate, function () {
+            return Word::inRandomOrder()->take(1)->get();
+        });
+
+        return view('liste.show-today-word', [
+            'randomWord' => $randomWord['0'],
         ]);
     }
 }

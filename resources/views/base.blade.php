@@ -45,9 +45,19 @@
                     >Accueil</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('liste.create') }}" @class(['nav-link', 'active' => $currentRoute === 'liste.create'])>Ajouter un mot</a>
+                    <a 
+                      class="nav-link" 
+                      href="{{ route('liste.create') }}"
+                      @class(['nav-link', 'active' => $currentRoute === 'liste.create'])
+                    >Ajouter un mot</a>
                   </li>
-
+                  <li class="nav-item">
+                    <a
+                      class="nav-link" 
+                      href="{{ route('showTodayWord') }}" 
+                      @class(['nav-link', 'active' => $currentRoute === 'showTodayWord'])
+                    >Mot du jour</a>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -39,3 +39,6 @@ Route::prefix('/liste')->name('liste.')->group(function () {
     ])
     ->name('showOne');
 });
+
+Route::get('/mot-du-jour', [WordController::class, 'showTodayWord'])
+->name('showTodayWord');
