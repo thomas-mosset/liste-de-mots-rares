@@ -57,7 +57,7 @@
 
             @if (session('success'))
               <!-- notification de succès d'un ajout de mot -->
-              <div class="alert alert-success">
+              <div class="alert alert-success my-5">
                 {{ session('success') }}
               </div>
             @endif

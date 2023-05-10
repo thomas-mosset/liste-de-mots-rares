@@ -25,5 +25,12 @@
                 <a href="{{ route('liste.edit', $word->id) }}" class="link-light link-offset-2 link-underline link-underline-opacity-0">Modifier le mot</a>
             </button>
         </div>
+
+        <div class="btn-action-div my-3">
+            <button type="button" class="btn btn-danger">
+                <a href="{{ route('liste.delete', $word->id) }}" class="link-light link-offset-2 link-underline link-underline-opacity-0">Supprimer le mot</a>
+            </button>
+        </div>
+        
     </div>
 @endsection

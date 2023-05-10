@@ -78,6 +78,15 @@ class WordController extends Controller
         return redirect()->route('liste.showOne', ['slug' => $word->slug, "id" => $word->id])->with('success', "Le mot a bien été modifié.");
     }
 
+    public function destroy (string $id) 
+    {
+        $word = Word::findOrFail($id);
+
+        $word->delete();
+
+        return redirect()->route('liste.index')->with('success', "Le mot a bien été supprimé.");
+    }
+
 
     // show 1 word (page)
     public function show (string $slug, string $id): RedirectResponse | View 
