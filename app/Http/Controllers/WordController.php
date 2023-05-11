@@ -99,7 +99,6 @@ class WordController extends Controller
         return redirect()->route('liste.index')->with('success', "Le mot a bien été supprimé.");
     }
 
-
     // show 1 word (page)
     public function show (string $slug, string $id): RedirectResponse | View 
     {
@@ -113,7 +112,6 @@ class WordController extends Controller
             'word' => $word,
         ]);
     }
-
 
     // show 1 word / change every day
     public function showTodayWord (): RedirectResponse | View 
@@ -129,13 +127,25 @@ class WordController extends Controller
         ]);
     }
 
-    
     public function showRandomWord (): RedirectResponse | View 
     {
         $randomWord = Word::inRandomOrder()->limit(1)->get();
 
         return view('liste.show-random-word', [
             'randomWord' => $randomWord['0'],
+        ]);
+    }
+
+    public function showSearchedWord (Request $request): View
+    {
+        $message = 'Pas de résulat trouvé.';
+        $search = $request->get('search');
+        $resultWords = Word::where('word','LIKE','%'.$search.'%')->get();
+
+        return view('liste.show-search-word', [
+            'search' => $search,
+            'resultWords' => $resultWords,
+            'message' => $message,
         ]);
     }
 }

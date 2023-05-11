@@ -46,6 +46,8 @@ Route::get('/mot-du-jour', [WordController::class, 'showTodayWord'])
 Route::get('/mot-aleatoire', [WordController::class, 'showRandomWord'])
 ->name('showRandomWord');
 
+Route::get('/chercher-un-mot', [WordController::class, 'showSearchedWord']);
+
 Route::fallback(function () {
     return view('errors.404');
 });

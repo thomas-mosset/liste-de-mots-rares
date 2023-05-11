@@ -2,24 +2,24 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>@yield('title') | Liste de mots rares</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>@yield('title') | Liste de mots rares</title>
 
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+      <!-- Bootstrap -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
 
-        <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
+      <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
 
-        <style>
-            @layer demo {
-                button {
-                    all: unset
-                }
-            }
-        </style>
+      <style>
+        @layer demo {
+          button {
+            all: unset
+          }
+        }
+      </style>
     </head>
     
     <body>
@@ -67,6 +67,14 @@
                     >Mot aléatoire</a>
                   </li>
                 </ul>
+
+                <!-- searchbar -->
+                <form action="/chercher-un-mot" method="get" class="d-flex" role="search">
+                  @csrf
+                  <input class="form-control me-2" type="search" placeholder="Rechercher un mot" name="search" aria-label="Search">
+                  <button class="btn btn-light text-success" type="submit">Rechercher</button>
+                </form>
+                
               </div>
             </div>
           </nav>
