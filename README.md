@@ -11,8 +11,9 @@ Une application permettant de lister des mots rares.
 ## **Utilisation de**
 
 ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/phpunit-3994CC.svg?style=for-the-badge&logo=phpunit&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
-![PHPUnit](https://img.shields.io/badge/phpunit-blue.svg?style=for-the-badge&logo=phpunit&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 ## **Fonctionnalités**
 
