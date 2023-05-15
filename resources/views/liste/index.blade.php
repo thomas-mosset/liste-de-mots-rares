@@ -23,7 +23,7 @@
                 <span class="fw-bold">[{{ $word->type }}]</span>
             </div>
 
-            <p>{{ $word->definition }}</p>
+            <p class="px-3">{{ $word->definition }}</p>
 
             <div class="btn-action-div">
                 <a href="{{ route('liste.showOne', ['slug' => $word->slug, 'id' => $word->id]) }}" class="btn btn-success">Accéder au mot</a>
